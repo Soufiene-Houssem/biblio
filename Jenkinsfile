@@ -19,6 +19,7 @@ pipeline {
       steps {
         echo 'Exécution des tests unitaires...'
         sh 'make test'
+        junit 'reports/test_report.xml'
       }
     }
 
