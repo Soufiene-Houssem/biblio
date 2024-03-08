@@ -12,10 +12,6 @@ pipeline {
       steps {
         echo 'Analyse statique du code en cours...'
         sh 'make lint'
-        recordIssues(
-              enabledForFailure: true, aggregatingResults: true,
-              tools: [java(), checkStyle(pattern: 'reports/checkstyle_*.xml', reportEncoding: 'UTF-8')]
-            )
       }
     }
 
