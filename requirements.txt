@@ -1,0 +1,14 @@
+Flask==3.0.1
+Flask-SQLAlchemy==3.1.1
+mysqlclient==2.2.1  
+python-dotenv==1.0.0
+pytz===2023.3
+gunicorn===21.2.0
+flask_mysqldb===2.0.0
+Flask-Caching===2.1.0
+redis===5.0.1
+uWSGI===2.0.23
+pylint===3.1.0
+pdoc===14.4.0
+pytest===8.0.2
+coverage===7.4.3

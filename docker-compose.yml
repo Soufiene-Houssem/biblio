@@ -1,0 +1,97 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.3.0
+    restart: 'on-failure'
+    container_name: biblio-mysql
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_PORT: ${MYSQL_PORT}
+      SERVICE_TAGS: dev 
+      SERVICE_NAME: mysql
+    volumes:
+      - './db:/docker-entrypoint-initdb.d'
+      - './data:/var/data'
+    networks:
+      - 'biblio'
+  
+  redis:
+    image: redis:latest
+    container_name: biblio-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - 'biblio'
+
+  flask1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: biblio-flask1
+    image: flask
+    working_dir: /var/app
+    ports:
+      - "8001:8000"
+    volumes:
+      - ./app:/var/app
+    depends_on:
+      - mysql
+      - redis
+    networks:
+      - biblio
+  
+  flask2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: biblio-flask2
+    image: flask
+    working_dir: /var/app
+    ports:
+      - "8002:8000"
+    volumes:
+      - ./app:/var/app
+    depends_on:
+      - mysql
+      - redis
+    networks:
+      - biblio
+  
+  flask3:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: biblio-flask3
+    image: flask
+    working_dir: /var/app
+    ports:
+      - "8003:8000"
+    volumes:
+      - ./app:/var/app
+    depends_on:
+      - mysql
+      - redis
+    networks:
+      - biblio
+
+  nginx:
+    image: nginx:latest
+    container_name: biblio-nginx
+    ports:
+      - '88:80'
+    volumes:
+      - './app:/var/app'
+      - './configs/nginx:/etc/nginx/conf.d'
+    depends_on:
+      - flask1
+      - flask2
+      - flask3
+    networks:
+      - biblio
+
+networks:
+  biblio:
+    driver: bridge

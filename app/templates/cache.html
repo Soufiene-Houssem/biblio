@@ -1,0 +1,34 @@
+{% extends "base.html" %} {% block title %}Liste des caches{% endblock %} {%
+block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cache Content</title>
+  </head>
+  <body>
+    <h1>Contenu du Cache</h1>
+    {% if cached_books %}
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Titre</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for book in cached_books %}
+          <tr>
+            <td>{{ book.titre }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+    <p>{{ message }}</p>
+    {% endif %}
+  </body>
+</html>
+{% endblock %}

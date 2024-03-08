@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Page de base{% endblock %}</title>
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Projet 1</a>
+            </div>
+            <ul class="nav navbar-nav">
+        
+                <li><a href="/livres">Liste des Livres</a></li>
+                <li><a href="/contenu-cache">Contenu du Cache</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/myjs.js') }}"></script>
+</body>
+</html>

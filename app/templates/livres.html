@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}Liste des Livres{% endblock %}
+{% block content %}
+<div class="mt-5">
+  <div class="row mb-6">
+    <div class="col-md-4">
+      <label for="categorieSelect" class="form-label">Filtrer par catégorie</label>
+      <select id="categorieSelect" class="form-control">
+        <option value="">Toutes les catégories</option>
+        {% for categorie in categories %}
+        <option value="{{ categorie.id }}">{{ categorie.nom }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="col-md-6">
+      <label for="ChercheInput" class="form-label">Rechercher livre</label>
+      <input class="form-control" type="text" id="ChercheInput" placeholder="Rechercher par auteur...">
+    </div>
+  </div>
+
+  <h1>Liste des Livres</h1>
+  <table class="table" id="Listlivreid">
+    <thead class="thead-dark">
+      <tr>
+        <th>Titre</th>
+        <th>Description</th>
+        <th>ISBN</th>
+        <th>Année d'apparition</th>
+        <th>Catégorie</th>
+        <th>Éditeur</th>
+        <th>Auteur</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for livre in books %}
+      <tr data-categorie-ids="{% for categorie in livre.categories %}{{ categorie.id }}{% if not loop.last %},{% endif %}{% endfor %}" data-auteurs-ids="{% for auteur in livre.auteurs %}{{ auteur.id }}{% if not loop.last %},{% endif %}{% endfor %}">
+        <td>{{ livre.titre }}</td>
+        <td>{{ livre.description }}</td>
+        <td>{{ livre.isbn }}</td>
+        <td>{{ livre.annee_apparition }}</td>
+        <td>
+          {% for categorie in livre.categories %}
+            {{ categorie.nom }}{% if not loop.last %}, {% endif %}
+          {% else %}
+            Non spécifié
+          {% endfor %}
+        </td>
+        <td>
+          {% for auteur in livre.auteurs %}
+            {{ auteur.nom }}{% if not loop.last %}, {% endif %}
+          {% else %}
+            Non spécifié
+          {% endfor %}
+        </td>
+        <td>{{ livre.editeur.nom if livre.editeur else 'Non spécifié' }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>    
+  </table>
+</div>
+{% endblock %}
