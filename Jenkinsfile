@@ -12,7 +12,10 @@ pipeline {
       steps {
         echo 'Analyse statique du code en cours...'
         sh 'make lint'
-        junit 'reports/LINT-lints*.xml'
+        recordIssues(
+              enabledForFailure: true, aggregatingResults: true,
+              tools: [java(), checkStyle(pattern: 'reports/checkstyle_*.xml', reportEncoding: 'UTF-8')]
+            )
       }
     }
 
@@ -20,7 +23,6 @@ pipeline {
       steps {
         echo 'Exécution des tests unitaires...'
         sh 'make test'
-        junit 'reports/TEST-tests*.xml'
       }
     }
 
@@ -28,7 +30,6 @@ pipeline {
       steps {
         echo 'Generation de la documentation...'
         sh 'make docs'
-        junit 'reports/DOCS-docs*.xml'
       }
     }
 
