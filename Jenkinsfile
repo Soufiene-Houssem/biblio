@@ -15,7 +15,9 @@ pipeline {
             }
             post {
                 always {
-                    archiveArtifacts artifacts: 'lint_report.xml', fingerprint: true
+                    script {
+                        junit allowEmptyResults: true, testResults: 'lint_report.xml'
+                    }
                 }
             }
         }
@@ -26,7 +28,9 @@ pipeline {
             }
             post {
                 always {
-                    archiveArtifacts artifacts: 'test_report.xml', fingerprint: true
+                    script {
+                        junit allowEmptyResults: true, testResults: 'test_report.xml'
+                    }
                 }
             }
         }
@@ -37,18 +41,22 @@ pipeline {
             }
             post {
                 always {
-                    archiveArtifacts artifacts: 'docs/*.html', fingerprint: true
+                    script {
+                        junit allowEmptyResults: true, testResults: 'docs_report.xml'
+                    }
                 }
             }
         }
-        stage('Couverture des tests') {
+        stage('Couverture de code') {
             steps {
-                echo 'Analyse de la couverture des tests...'
+                echo 'Analyse de la couverture de code...'
                 sh 'make coverage'
             }
             post {
                 always {
-                    archiveArtifacts artifacts: 'coverage_report.xml', fingerprint: true
+                    script {
+                        junit allowEmptyResults: true, testResults: 'coverage_report.xml'
+                    }
                 }
             }
         }
