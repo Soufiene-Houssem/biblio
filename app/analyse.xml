@@ -1,0 +1,134 @@
+<?xml version="1.0" ?>
+<testsuites disabled="0" errors="0" failures="16" tests="20" time="0.0">
+	<testsuite disabled="0" errors="0" failures="0" name="Command line or configuration file" skipped="0" tests="1" time="0">
+		<testcase name="Command line or configuration file:0:0" classname="pylint">
+			<system-out>All checks passed for: None</system-out>
+		</testcase>
+	</testsuite>
+	<testsuite disabled="0" errors="0" failures="14" name="routes" skipped="0" tests="16" time="0">
+		<testcase name="routes:0:0" classname="pylint" file="routes.py">
+			<system-out>All checks passed for: routes.py</system-out>
+		</testcase>
+		<testcase name="routes:29:37" classname="pylint" class="convention" file="routes.py" line="29">
+			<failure type="failure" message="trailing-whitespace">C0303:Trailing whitespace
+routes.py:29:37:joinedload(Livre.auteurs)</failure>
+			<system-out>routes.py:29:37:joinedload(Livre.auteurs)</system-out>
+			<system-err>C0303:Trailing whitespace
+routes.py:29:37:joinedload(Livre.auteurs)</system-err>
+		</testcase>
+		<testcase name="routes:32:0" classname="pylint" class="convention" file="routes.py" line="32">
+			<failure type="failure" message="trailing-whitespace">C0303:Trailing whitespace
+routes.py:32:0:</failure>
+			<system-out>routes.py:32:0:</system-out>
+			<system-err>C0303:Trailing whitespace
+routes.py:32:0:</system-err>
+		</testcase>
+		<testcase name="routes:37:39" classname="pylint" class="convention" file="routes.py" line="37">
+			<failure type="failure" message="trailing-whitespace">C0303:Trailing whitespace
+routes.py:37:39:cached_livres = cache.get('livres')</failure>
+			<system-out>routes.py:37:39:cached_livres = cache.get('livres')</system-out>
+			<system-err>C0303:Trailing whitespace
+routes.py:37:39:cached_livres = cache.get('livres')</system-err>
+		</testcase>
+		<testcase name="routes:43:0" classname="pylint" class="convention" file="routes.py" line="43">
+			<failure type="failure" message="trailing-newlines">C0305:Trailing newlines
+routes.py:43:0:</failure>
+			<system-out>routes.py:43:0:</system-out>
+			<system-err>C0305:Trailing newlines
+routes.py:43:0:</system-err>
+		</testcase>
+		<testcase name="routes:1:0" classname="pylint" class="convention" file="routes.py" line="1">
+			<failure type="failure" message="missing-module-docstring">C0114:Missing module docstring
+routes.py:1:0:from flask import render_template, Blueprint, jsonify</failure>
+			<system-out>routes.py:1:0:from flask import render_template, Blueprint, jsonify</system-out>
+			<system-err>C0114:Missing module docstring
+routes.py:1:0:from flask import render_template, Blueprint, jsonify</system-err>
+		</testcase>
+		<testcase name="routes:14:0" classname="pylint" class="convention" file="routes.py" line="14">
+			<failure type="failure" message="missing-function-docstring">C0116:Missing function or method docstring
+routes.py:14:0:def index():</failure>
+			<system-out>routes.py:14:0:def index():</system-out>
+			<system-err>C0116:Missing function or method docstring
+routes.py:14:0:def index():</system-err>
+		</testcase>
+		<testcase name="routes:22:0" classname="pylint" class="convention" file="routes.py" line="22">
+			<failure type="failure" message="missing-function-docstring">C0116:Missing function or method docstring
+routes.py:22:0:def get_livres():</failure>
+			<system-out>routes.py:22:0:def get_livres():</system-out>
+			<system-err>C0116:Missing function or method docstring
+routes.py:22:0:def get_livres():</system-err>
+		</testcase>
+		<testcase name="routes:36:0" classname="pylint" class="convention" file="routes.py" line="36">
+			<failure type="failure" message="missing-function-docstring">C0116:Missing function or method docstring
+routes.py:36:0:def cache_content():</failure>
+			<system-out>routes.py:36:0:def cache_content():</system-out>
+			<system-err>C0116:Missing function or method docstring
+routes.py:36:0:def cache_content():</system-err>
+		</testcase>
+		<testcase name="routes:38:4" classname="pylint" class="refactor" file="routes.py" line="38">
+			<failure type="failure" message="no-else-return">R1705:Unnecessary &quot;else&quot; after &quot;return&quot;, remove the &quot;else&quot; and de-indent the code inside it
+routes.py:38:4:if cached_livres:</failure>
+			<system-out>routes.py:38:4:if cached_livres:</system-out>
+			<system-err>R1705:Unnecessary &quot;else&quot; after &quot;return&quot;, remove the &quot;else&quot; and de-indent the code inside it
+routes.py:38:4:if cached_livres:</system-err>
+		</testcase>
+		<testcase name="routes:2:0" classname="pylint" class="convention" file="routes.py" line="2">
+			<failure type="failure" message="wrong-import-order">C0411:standard import &quot;datetime.datetime&quot; should be placed before third party import &quot;flask.render_template&quot;
+routes.py:2:0:from datetime import datetime</failure>
+			<system-out>routes.py:2:0:from datetime import datetime</system-out>
+			<system-err>C0411:standard import &quot;datetime.datetime&quot; should be placed before third party import &quot;flask.render_template&quot;
+routes.py:2:0:from datetime import datetime</system-err>
+		</testcase>
+		<testcase name="routes:6:0" classname="pylint" class="convention" file="routes.py" line="6">
+			<failure type="failure" message="wrong-import-order">C0411:third party import &quot;sqlalchemy.orm.joinedload&quot; should be placed before first party imports &quot;models.model.Livre&quot;, &quot;models.model.Editeur&quot;, &quot;models.model.Categorie&quot; 
+routes.py:6:0:from sqlalchemy.orm import joinedload</failure>
+			<system-out>routes.py:6:0:from sqlalchemy.orm import joinedload</system-out>
+			<system-err>C0411:third party import &quot;sqlalchemy.orm.joinedload&quot; should be placed before first party imports &quot;models.model.Livre&quot;, &quot;models.model.Editeur&quot;, &quot;models.model.Categorie&quot; 
+routes.py:6:0:from sqlalchemy.orm import joinedload</system-err>
+		</testcase>
+		<testcase name="routes:8:0" classname="pylint" class="convention" file="routes.py" line="8">
+			<failure type="failure" message="wrong-import-order">C0411:third party import &quot;pytz&quot; should be placed before first party imports &quot;models.model.Livre&quot;, &quot;models.model.Editeur&quot;, &quot;models.model.Categorie&quot; 
+routes.py:8:0:import pytz</failure>
+			<system-out>routes.py:8:0:import pytz</system-out>
+			<system-err>C0411:third party import &quot;pytz&quot; should be placed before first party imports &quot;models.model.Livre&quot;, &quot;models.model.Editeur&quot;, &quot;models.model.Categorie&quot; 
+routes.py:8:0:import pytz</system-err>
+		</testcase>
+		<testcase name="routes:1:0" classname="pylint" class="warning" file="routes.py" line="1">
+			<failure type="failure" message="unused-import">W0611:Unused jsonify imported from flask
+routes.py:1:0:from flask import render_template, Blueprint, jsonify</failure>
+			<system-out>routes.py:1:0:from flask import render_template, Blueprint, jsonify</system-out>
+			<system-err>W0611:Unused jsonify imported from flask
+routes.py:1:0:from flask import render_template, Blueprint, jsonify</system-err>
+		</testcase>
+		<testcase name="routes:4:0" classname="pylint" class="warning" file="routes.py" line="4">
+			<failure type="failure" message="unused-import">W0611:Unused Editeur imported from models.model
+routes.py:4:0:from models.model  import Editeur</failure>
+			<system-out>routes.py:4:0:from models.model  import Editeur</system-out>
+			<system-err>W0611:Unused Editeur imported from models.model
+routes.py:4:0:from models.model  import Editeur</system-err>
+		</testcase>
+		<testcase name="routes:0:0" classname="pylint" file="routes.py">
+			<system-out>All checks passed for: routes.py</system-out>
+		</testcase>
+	</testsuite>
+	<testsuite disabled="0" errors="0" failures="2" name="run" skipped="0" tests="3" time="0">
+		<testcase name="run:0:0" classname="pylint" file="run.py">
+			<system-out>All checks passed for: run.py</system-out>
+		</testcase>
+		<testcase name="run:1:0" classname="pylint" class="convention" file="run.py" line="1">
+			<failure type="failure" message="missing-module-docstring">C0114:Missing module docstring
+run.py:1:0:from flask import Flask, jsonify</failure>
+			<system-out>run.py:1:0:from flask import Flask, jsonify</system-out>
+			<system-err>C0114:Missing module docstring
+run.py:1:0:from flask import Flask, jsonify</system-err>
+		</testcase>
+		<testcase name="run:1:0" classname="pylint" class="warning" file="run.py" line="1">
+			<failure type="failure" message="unused-import">W0611:Unused jsonify imported from flask
+run.py:1:0:from flask import Flask, jsonify</failure>
+			<system-out>run.py:1:0:from flask import Flask, jsonify</system-out>
+			<system-err>W0611:Unused jsonify imported from flask
+run.py:1:0:from flask import Flask, jsonify</system-err>
+		</testcase>
+	</testsuite>
+</testsuites>
+
