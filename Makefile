@@ -10,4 +10,4 @@ run:
 
 lint:
 	@echo "Exécution de pylint..."
-	docker exec biblio-flask1 sh -c "pylint --output-format=pylint_junit.JUnitReporter ./run.py > lint_report.xml" || true
+	docker exec biblio-flask1 sh -c "pylint --output-format=pylint_junit.JUnitReporter ./run.py > analyse.xml" || true
