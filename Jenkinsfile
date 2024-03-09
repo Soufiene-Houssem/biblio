@@ -16,7 +16,7 @@ pipeline {
             post {
                 always {
                     script {
-                        junit skipPublishingChecks: true, testResults: 'app/analyse.xml'
+                        junit allowEmptyResults: true, testResults: 'app/analyse.xml'
                     }
                 }
             }
