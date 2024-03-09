@@ -16,7 +16,7 @@ pipeline {
             post {
                 always {
                     script {
-                        junit skipPublishingChecks: true, testResults: 'app/rapport.xml'
+                        junit skipPublishingChecks: true, testResults: 'app/lint_report.xml'
                     }
                 }
             }
