@@ -1,11 +1,9 @@
-from flask import render_template, Blueprint, jsonify
 from datetime import datetime
-from models.model import Livre
-from models.model  import Editeur
-from models.model  import Categorie
-from sqlalchemy.orm import joinedload
-
+from flask import render_template, Blueprint
 import pytz
+from sqlalchemy.orm import joinedload
+from models.model import Livre
+from models.model  import Categorie
 from configs.config import cache
 
 app_routes = Blueprint('app_routes', __name__)
@@ -29,7 +27,6 @@ def get_livres():
             joinedload(Livre.auteurs) 
         ).all()
         cache.set('livres', livres, timeout=50)
-        
     return render_template('livres.html', books=livres, categories=categories)
 
 @app_routes.route('/contenu-cache')
@@ -37,7 +34,5 @@ def cache_content():
     cached_livres = cache.get('livres') 
     if cached_livres:
         return render_template('cache.html', cached_books=cached_livres)
-    else:
-        message = 'Aucun contenu dans le cache'
-        return render_template('cache.html', message=message)
-
+    message = 'Aucun contenu dans le cache'
+    return render_template('cache.html', message=message)

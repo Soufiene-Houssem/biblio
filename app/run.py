@@ -1,4 +1,8 @@
-from flask import Flask, jsonify
+"""
+Fichier principal de l'application Flask.
+"""
+
+from flask import Flask
 from models.model import db
 from configs.config import Config, cache
 from routes import app_routes
