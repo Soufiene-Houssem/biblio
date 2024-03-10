@@ -13,7 +13,7 @@ pipeline {
                 echo 'Analyse statique du code en cours...'
                 sh 'make lint'
             }
-            post {
+          post {
                 always {
                     script {
                         junit allowEmptyResults: true, testResults: 'app/analyse.xml'
