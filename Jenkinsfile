@@ -6,14 +6,22 @@ pipeline {
             steps {
                 echo 'Analyse statique du code en cours...'
                 sh 'make lint'
-                junit 'TEST-pylint_report.xml'
+            }
+            post {
+                always {
+                    junit 'TEST-pylint_report.xml'
+                }
             }
         }
         stage('Tests unitaires') {
             steps {
                 echo 'Exécution des tests unitaires...'
                 sh 'make test'
-                junit 'TEST-test_results.xml'
+            }
+            post {
+                always {
+                    junit 'TEST-test_results.xml'
+                }
             }
         }
         stage('Génération de documentation') {
