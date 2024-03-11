@@ -16,7 +16,7 @@ pipeline {
             post {
                 always {
                     script {
-                        sh 'docker cp biblio-flask1:/reports/lint_report.xml reports/'
+                        sh 'docker cp biblio-flask1:reports/lint_report.xml reports/'
                     }
                     junit allowEmptyResults: true, testResults: 'reports/lint_report.xml'
                 }
@@ -30,7 +30,7 @@ pipeline {
             post {
                 always {
                     script {
-                        sh 'docker cp biblio-flask1:/reports/test_report.xml reports/'
+                        sh 'docker cp biblio-flask1:reports/test_report.xml reports/'
                     }
                     junit allowEmptyResults: true, testResults: 'reports/test_report.xml'
                 }
@@ -44,7 +44,7 @@ pipeline {
             post {
                 always {
                     script {
-                        sh 'docker cp biblio-flask1:/reports/docs_report.xml reports/'
+                        sh 'docker cp biblio-flask1:reports/docs_report.xml reports/'
                     }
                     junit allowEmptyResults: true, testResults: 'reports/docs_report.xml'
                 }
@@ -58,7 +58,7 @@ pipeline {
             post {
                 always {
                     script {
-                        sh 'docker cp biblio-flask1:/reports/coverage_report.xml reports/'
+                        sh 'docker cp biblio-flask1:reports/coverage_report.xml reports/'
                     }
                     junit allowEmptyResults: true, testResults: 'reports/coverage_report.xml'
                 }
