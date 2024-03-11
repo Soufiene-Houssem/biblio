@@ -6,7 +6,7 @@ build:
 
 lint: prepare
 	@echo "Exécution de pylint..."
-	docker exec biblio-flask1 sh -c "pylint --disable=missing-docstring,trailing-whitespace --output-format=pylint_junit.JUnitReporter ./*.py --output=TEST-pylint_report.xml" || true
+	docker exec biblio-flask1 sh -c "pylint --disable=missing-docstring,trailing-whitespace --output-format=pylint_junit.JUnitReporter ./*.py --output=analyse.xml" || true
 
 test: prepare
 	@echo "Exécution des tests unitaires..."

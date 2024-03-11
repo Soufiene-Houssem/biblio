@@ -15,7 +15,7 @@ pipeline {
             }
             post {
                 always {
-                    junit 'TEST-pylint_report.xml'
+                    junit 'analyse.xml'
                 }
             }
         }
