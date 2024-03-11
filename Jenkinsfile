@@ -15,7 +15,7 @@ pipeline {
 			}
 			post {
 				always {
-					junit allowEmptyResults: true, testResults: 'app/analyse.xml'
+					junit allowEmptyResults: true, testResults: 'app/TEST-pylint_report.xml'
 				}
 			}
 		}
@@ -26,7 +26,7 @@ pipeline {
 			}
 			post {
 				always {
-					junit 'TEST-test_results.xml'
+					junit allowEmptyResults: true, testResults: 'app/TEST-test_results.xml'
 				}
 			}
 		}
