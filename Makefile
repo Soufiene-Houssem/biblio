@@ -2,7 +2,7 @@ all: build lint test docs coverage
 
 build:
 	@echo "Construction de l'image Docker..."
-	docker-compose run -d --build
+	docker-compose up -d --build
 
 lint: prepare
 	@echo "Exécution de pylint..."
