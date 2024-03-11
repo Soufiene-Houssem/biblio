@@ -15,7 +15,7 @@ pipeline {
             }
             post {
                 always {
-                    junit allowEmptyResults: true, testResults: 'analyse.xml'
+                    junit allowEmptyResults: true, testResults: 'app/lintreport.xml'
                 }
             }
         }
@@ -26,7 +26,7 @@ pipeline {
             }
             post {
                 always {
-                    junit allowEmptyResults: true, testResults: 'reports/test_report.xml'
+                    junit allowEmptyResults: true, testResults: 'app/testreport.xml'
                 }
             }
         }
@@ -35,21 +35,11 @@ pipeline {
                 echo 'Génération de la documentation...'
                 sh 'make docs'
             }
-            post {
-                always {
-                    junit allowEmptyResults: true, testResults: 'reports/docs_report.xml'
-                }
-            }
         }
         stage('Couverture de code') {
             steps {
                 echo 'Analyse de la couverture de code...'
                 sh 'make coverage'
-            }
-            post {
-                always {
-                    junit allowEmptyResults: true, testResults: 'reports/coverage_report.xml'
-                }
             }
         }
     }
