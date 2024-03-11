@@ -1,12 +1,8 @@
-all: build run lint test docs coverage
+all: build lint test docs coverage
 
 build:
 	@echo "Construction de l'image Docker..."
-	docker-compose build .
-
-run:
-	@echo "Exécution de l'application..."
-	docker-compose up -d
+	docker-compose run -d --build .
 
 lint: prepare
 	@echo "Exécution de pylint..."
