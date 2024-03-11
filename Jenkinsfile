@@ -12,11 +12,11 @@ pipeline {
             steps {
                 echo 'Analyse statique du code en cours...'
                 sh 'make lint'
-                recordIssues(
-                    enabledForFailure: true,
-                    aggregatingResults: true,
-                    tools: [pyLint(pattern: 'reports/lint_report.xml')]
-                )
+            }
+            post {
+                always {
+                    junit allowEmptyResults: true, testResults: 'analyse.xml'
+                }
             }
         }
         stage('Tests unitaires') {
