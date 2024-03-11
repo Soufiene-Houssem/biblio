@@ -15,7 +15,7 @@ pipeline {
             }
             post {
                 always {
-                    junit 'analyse.xml'
+                    junit allowEmptyResults: true, testResults: 'app/analyse.xml'
                 }
             }
         }
