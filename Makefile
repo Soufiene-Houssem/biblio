@@ -14,8 +14,7 @@ lint: prepare
 
 test: prepare
 	@echo "Exécution des tests unitaires..."
-	docker exec biblio-flask1 pytest || true
-	docker exec biblio-flask1 pytest --junitxml=testreport.xml || true
+	docker exec biblio-flask1 pytest --junitxml=analyse.xml || true
 
 docs: prepare
 	@echo "Génération de la documentation..."
