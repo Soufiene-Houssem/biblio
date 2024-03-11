@@ -12,22 +12,14 @@ pipeline {
             steps {
                 echo 'Analyse statique du code en cours...'
                 sh 'make lint'
-            }
-            post {
-                always {
-                    junit allowEmptyResults: true, testResults: 'lintreport.xml'
-                }
+                junit 'TEST-pylint_report.xml'
             }
         }
         stage('Tests unitaires') {
             steps {
                 echo 'Exécution des tests unitaires...'
                 sh 'make test'
-            }
-            post {
-                always {
-                    junit allowEmptyResults: true, testResults: 'analyse.xml'
-                }
+                junit 'TEST-test_results.xml'
             }
         }
         stage('Génération de documentation') {
