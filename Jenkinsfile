@@ -15,7 +15,7 @@ pipeline {
                 recordIssues(
                     enabledForFailure: true,
                     aggregatingResults: true,
-                    tools: [pyLint(pattern: 'reports/pylint_*.xml')]
+                    tools: [pyLint(pattern: 'reports/lint_report.xml')]
                 )
             }
         }
