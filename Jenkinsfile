@@ -12,10 +12,11 @@ pipeline {
             steps {
                 echo 'Analyse statique du code en cours...'
                 sh 'make lint'
+                junit 'reports/TEST-tests*.xml'
             }
             post {
                 always {
-                    junit allowEmptyResults: true, testResults: 'app/reports/lint_report.xml'
+                    junit allowEmptyResults: true, testResults: 'reports/lint_report.xml'
                 }
             }
         }
@@ -23,10 +24,11 @@ pipeline {
             steps {
                 echo 'Exécution des tests unitaires...'
                 sh 'make test'
+                junit 'reports/TEST-tests*.xml'
             }
             post {
                 always {
-                    junit allowEmptyResults: true, testResults: 'app/reports/test_report.xml'
+                    junit allowEmptyResults: true, testResults: 'reports/test_report.xml'
                 }
             }
         }
@@ -34,10 +36,11 @@ pipeline {
             steps {
                 echo 'Génération de la documentation...'
                 sh 'make docs'
+                junit 'reports/TEST-tests*.xml'
             }
             post {
                 always {
-                    junit allowEmptyResults: true, testResults: 'app/reports/docs_report.xml'
+                    junit allowEmptyResults: true, testResults: 'reports/docs_report.xml'
                 }
             }
         }
@@ -45,10 +48,11 @@ pipeline {
             steps {
                 echo 'Analyse de la couverture de code...'
                 sh 'make coverage'
+                junit 'reports/TEST-tests*.xml'
             }
             post {
                 always {
-                    junit allowEmptyResults: true, testResults: 'app/reports/coverage_report.xml'
+                    junit allowEmptyResults: true, testResults: 'reports/coverage_report.xml'
                 }
             }
         }
