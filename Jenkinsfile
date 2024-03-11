@@ -15,7 +15,7 @@ pipeline {
             }
             post {
                 always {
-                    junit allowEmptyResults: true, testResults: 'reports/lint_report.xml'
+                    junit allowEmptyResults: true, testResults: 'app/reports/lint_report.xml'
                 }
             }
         }
@@ -26,7 +26,7 @@ pipeline {
             }
             post {
                 always {
-                    junit allowEmptyResults: true, testResults: 'reports/test_report.xml'
+                    junit allowEmptyResults: true, testResults: 'app/reports/test_report.xml'
                 }
             }
         }
@@ -37,7 +37,7 @@ pipeline {
             }
             post {
                 always {
-                    junit allowEmptyResults: true, testResults: 'reports/docs_report.xml'
+                    junit allowEmptyResults: true, testResults: 'app/reports/docs_report.xml'
                 }
             }
         }
@@ -48,7 +48,7 @@ pipeline {
             }
             post {
                 always {
-                    junit allowEmptyResults: true, testResults: 'reports/coverage_report.xml'
+                    junit allowEmptyResults: true, testResults: 'app/reports/coverage_report.xml'
                 }
             }
         }
