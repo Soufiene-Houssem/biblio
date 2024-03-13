@@ -1,28 +1,46 @@
 pipeline {
-    agent any
+	agent any
 
-    stages {
-        stage('Build') {
-            steps {
-                echo 'Construction de l\'image Docker...'
-                sh 'make build'
-            }
-        }
-        stage('Analyse statique') {
-            steps {
-                echo 'Analyse statique du code en cours...'
-                sh 'make lint'
-            }
-          post {
-                always {
-                    script {
-                        junit allowEmptyResults: true, testResults: 'app/analyse.xml'
-                    }
-                }
-            }
-        }
-    }
-
+	stages {
+		stage('Build') {
+			steps {
+				echo 'Construction de l\'image Docker...'
+				sh 'make build'
+			}
+		}
+		stage('Analyse statique') {
+			steps {
+				echo 'Analyse statique du code en cours...'
+				sh 'make lint'
+			}
+			post {
+				always {
+					junit allowEmptyResults: true, testResults: 'app/TEST-pylint_report.xml'
+				}
+			}
+		}
+		stage('Tests unitaires') {
+			steps {
+				echo 'Exécution des tests unitaires...'
+				sh 'make test'
+			}
+			post {
+				always {
+					junit allowEmptyResults: true, testResults: 'app/TEST-test_results.xml'
+				}
+			}
+		}
+		stage('Génération de documentation') {
+			steps {
+				echo 'Génération de la documentation...'
+				sh 'make docs'
+			}
+		}
+		stage('Couverture de code') {
+			steps {
+				echo 'Analyse de la couverture de code...'
+				sh 'make coverage'
+			}
+		}
+	}
 }
-
-
